@@ -1,0 +1,25 @@
+<div class="container mt-4 col-md-7">
+    <h4 class="text-center bold">Plans</h4>
+    <div class="card p-4 border-danger ">
+        <table class="table">
+            <thead class="thead-light bg-light">
+                <tr>
+                    <th scope="col" id="SNO">SNO</th>
+                    <th scope="col" id="Plan Name">Plan Name</th>
+                    <th scope="col" id="Amount">Amount</th>
+                    <th scope="col" id="Tenure">Tenure</th>
+                    <th scope="col" id="Plan Type">Plan Type</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of temp">
+                    <td>{{item.id}}</td>
+                    <td>{{item.planname}}</td>
+                    <td>{{item.amount}}</td>
+                    <td>{{item.tenure}}</td>
+                    <td>{{item.type}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
