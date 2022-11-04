@@ -1,6 +1,4 @@
-import { state } from '@angular/animations';
 import { Component, OnInit } from '@angular/core';
-import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { SavingadvisorService } from '../savingadvisor.service';
 
@@ -14,12 +12,17 @@ export class SavingadvisorComponent implements OnInit {
  ExistingCustomer:boolean= false;
  b:any[]=[];
  data:any[]=[];
+// flag:boolean= true;
+
   constructor(private savingdAdvisorService:SavingadvisorService,
     private router:Router
-    ) { }
+    ) { 
+    }
 
   ngOnInit(): void 
-  { }
+  {
+    // this.flag=true;
+  }
 
   r1()
   {
@@ -36,22 +39,42 @@ export class SavingadvisorComponent implements OnInit {
 
   ncustomer(ncustomerform:any)
   {
+    if(!ncustomerform.valid) {
+      document.getElementById('ErrorMsg').innerHTML="Invalid Input";
+    }
+    else{
+    // this.flag = false;
     console.log(ncustomerform.value);
     this.savingdAdvisorService.savingad(ncustomerform.value).subscribe((res:any)=>{
       console.log(res);
       this.data=res;
-      this.router.navigate(['plans'],{state :{plan:this.data}});
+      this.savingdAdvisorService.planvalues.next(this.data)
+      this.router.navigate(['plans']);
       console.log(this.data);
       //this.b.push(this.data);
       //this.router.navigateByUrl('/plans');
+
     })
+  }
   }
     ecustomer(ecustomerform: any)
     {
-      console.log(ecustomerform.value);
-      this.savingdAdvisorService.savingad1(ecustomerform.value).subscribe((res1)=>{
-        console.log(res1);
-      })
+      if(!ecustomerform.valid) 
+      {
+        document.getElementById('ErrorMsg').innerHTML="Invalid Input";
+      }
+      else
+      {
+        console.log(ecustomerform.value);
+        this.savingdAdvisorService.savingad1(ecustomerform.value).subscribe((res:any) => {
+        this.data=res;
+        this.savingdAdvisorService.planvalues.next(this.data)
+        this.router.navigate(['plans']);
+        console.log(res);
+        })
+      }
     }
+
+
   }
 

@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { LoginService } from '../login.service';
 import { User } from '../user';
@@ -9,7 +8,7 @@ import { User } from '../user';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-
+  error: any;
   user:User= new User();
   constructor(private loginservice: LoginService,
     private Router: Router
@@ -23,10 +22,19 @@ export class LoginComponent implements OnInit {
     this.loginservice.loginUser(this.user).subscribe(_data => {
       let a:any = _data
       localStorage.setItem('token',JSON.stringify(a))
-
-      alert("Login Success"); 
+      
       this.Router.navigateByUrl('/home');
-    },_error=>alert("Please enter correct Username and Password"));
+      document.getElementsByClassName('nava')[0]['style'].display="block";
+      document.getElementsByClassName('nava')[1]['style'].display="block";
+      document.getElementsByClassName('nava')[2]['style'].display="block";
+      document.getElementsByClassName('nava')[3]['style'].display="block";
+    },(_error:any)=>{  
+    // this.error="Invalid Credentials";
+    document.getElementById('ErrorMsg').innerHTML="Invalid Credentials";
+  }
+    
+    );
+
   }
   
 }

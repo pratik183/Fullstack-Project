@@ -1,13 +1,14 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class SavingadvisorService {
- 
-  private baseUrl = "http://localhost:8081/digitalbanking/savingadvisor/newcustomer";
-  private baseUrl2= "http://localhost:8081/digitalbanking/savingadvisor/existingcustomer";
+  planvalues = new BehaviorSubject(null);
+  private baseUrl = "http://localhost:8080/newcustomer";
+  private baseUrl2= "http://localhost:8080/existingcustomer";
 
   constructor(private httpClient: HttpClient) { }
 

@@ -1,7 +1,7 @@
 <br>
 <div class="text-center">
     <div class="form-check form-check-inline ">
-        <input (click)="r1()" class="form-check-input " type="radio" name="CustomerType" id="inlineRadio1" value="NewCustomer">
+        <input (click)="r1()" class="form-check-input " type="radio" name="CustomerType" id="NewCustomerRadio" value="NewCustomer">
         <label class="form-check-label ">New Customer</label>
     </div>
     <div class="form-check form-check-inline m-3">
@@ -9,17 +9,20 @@
         <label class="form-check-label">Existing Customer</label>
     </div>
 </div>
+
+
 <div class="container mt-4 col-md-7" *ngIf="NewCustomer">
     <div class="card p-4 border-danger bg-light">
         <form #ncustomerform='ngForm' (ngSubmit)="ncustomer(ncustomerform)">
             <div class="mb-3">
                 <label for="exampleFormControlInput1" class="form-label">Age</label>
-                <input type="textbox" class="form-control" class="form-control" id="Age" name="age" placeholder="Enter Age" ngModel required>
+                <input maxlength="3" type="textBox" pattern="\d{1,5}" class="form-control" class="form-control" id="Age" name="age" placeholder="Enter Age" ngModel required>
             </div>
             <div class="mb-3">
                 <label for="exampleFormControlInput1" id="LblIncome" class="form-label">Income</label>
-                <input type="textbox" class="form-control" id="Income" name="income" placeholder="Enter Income" ngModel required>
+                <input type="textBox" maxlength="10" pattern="\d{1,10}" class="form-control" id="Income" name="income" placeholder="Enter Income" ngModel required>
             </div>
+            <div id="ErrorMsg"></div>
             <div class="text-center">
                 <button type="submit" id="NewCustomerSubmit" class="btn btn-outline-success ">Submit</button>
             </div>
@@ -32,18 +35,29 @@
         <form #ecustomerform='ngForm' (ngSubmit)="ecustomer(ecustomerform)">
             <div class="mb-3">
                 <label for="exampleFormControlInput1" id="LblLastMonthBalance" class="form-label">Last month balance </label>
-                <input type="textbox" class="form-control" id="LastMonthBalance" name="lastMonthBalance" placeholder="Last month balance" ngModel required>
+                <input type="textBox" pattern="\d{1,10}" maxlength="10" class="form-control" id="LastMonthBalance" name="lastMonthBalance" placeholder="Last month balance" ngModel required>
+                <span id="error"></span>
             </div>
             <div class="mb-3">
                 <label for="exampleFormControlInput1" id="LblLastBeforeMonthBalance" class="form-label">Last before month balance </label>
-                <input type="textbox" class="form-control" id="LastBeforeMonthBalance" name="lastBeforeMonthBalance" placeholder="Last before month balance" ngModel required>
+                <input type="textBox" pattern="\d{1,10}" maxlength="10" class="form-control" id="LastBeforeMonthBalance" name="lastBeforeMonthBalance" placeholder="Last before month balance" ngModel required>
             </div>
+            <div id="ErrorMsg"></div>
             <div class="text-center">
                 <button type="submit" Id="ExistingCustomerSubmit" class="btn btn-outline-success ">Submit</button>
             </div>
         </form>
     </div>
 </div>
+
+
+
+<!-- <div class="alert alert-danger alert-dismissible d-flex align-items-center fade show">
+    <i class="bi-exclamation-octagon-fill"></i>
+    <strong class="mx-2">Error!</strong> A problem has been occurred while submitting your data.
+    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+</div> -->
+
 <!-- <app-plans [c]="data">
 </app-plans> -->
 <!-- <div Id=”ErrorMsg” *ngIf="errormsg()">Invalid Input</div> -->

@@ -5,14 +5,18 @@
 
             <div class="mb-3">
                 <label for="exampleFormControlInput1" class="form-label">Username</label>
-                <input type="email" [(ngModel)]="user.username" class="form-control" id="username" name="username" placeholder="name@example.com" required>
+                <input type="textbox" [(ngModel)]="user.username" class="form-control" id="UserName" name="username" placeholder="username" required>
             </div>
             <div class="mb-3">
                 <label for="exampleFormControlInput1" class="form-label">Password</label>
-                <input type="password" [(ngModel)]="user.password" class="form-control" id="password" name="password" placeholder="password" required>
+                <input type="password" [(ngModel)]="user.password" class="form-control" id="Password" name="password" placeholder="password" required>
+            </div>
+            <!-- <div class="alert alert-danger alert-dismissible d-flex align-items-center fade show" *ngIf="error"> -->
+            <div class="text-md-center pb-md-2 text-danger" id="ErrorMsg">
+                <!-- <b>{{error}}</b> -->
             </div>
             <div class="text-center">
-                <button [disabled]="!loginForm.valid" type="submit" class="btn btn-outline-success ">Login</button>
+                <button [disabled]="!loginForm.valid" type="submit" class="btn btn-outline-success " id="Login">Login</button>
             </div>
         </form>
     </div>

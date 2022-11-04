@@ -1,23 +1,68 @@
 <div class="container mt-4 col-md-7">
-    <h4 class="text-center bold">Plans</h4>
+    <div class="text-center">
+        <label>
+            <h3>Plans</h3>
+        </label>
+    </div>
     <div class="card p-4 border-danger ">
         <table class="table">
             <thead class="thead-light bg-light">
                 <tr>
-                    <th scope="col" id="SNO">SNO</th>
-                    <th scope="col" id="Plan Name">Plan Name</th>
-                    <th scope="col" id="Amount">Amount</th>
-                    <th scope="col" id="Tenure">Tenure</th>
-                    <th scope="col" id="Plan Type">Plan Type</th>
+                    <th scope="col">
+                        <tr>
+                            <label id="SNO">
+                            SNO
+                            </label>
+                        </tr>
+                        <th scope="col">
+                            <label id="PlanName"> 
+                            Plan Name
+                            </label>
+                        </th>
+                        <th scope="col">
+                            <label id="Amount">
+                            Amount 
+                            </label>
+                        </th>
+                        <th scope="col">
+                            <label id="Tenure">
+                            Tenure
+                            </label>
+                        </th>
+                        <th scope="col">
+                            <label id="PlanType">
+                            Plan Type
+                            </label>
+                        </th>
                 </tr>
             </thead>
             <tbody>
                 <tr *ngFor="let item of temp">
-                    <td>{{item.id}}</td>
-                    <td>{{item.planname}}</td>
-                    <td>{{item.amount}}</td>
-                    <td>{{item.tenure}}</td>
-                    <td>{{item.type}}</td>
+                    <td>
+                        <label id="Sno{{item.id}}">
+                            {{item.id}}
+                        </label>
+                    </td>
+                    <td>
+                        <label id="Plan{{item.id}}">
+                        {{item.planname}}
+                        </label>
+                    </td>
+                    <td>
+                        <label id="Amount{{item.id}}">
+                            {{item.amount}}
+                        </label>
+                    </td>
+                    <td>
+                        <label id="Tenure{{item.id}}">
+                            {{item.tenure}}
+                        </label>
+                    </td>
+                    <td>
+                        <label id="PlanType{{item.id}}">
+                            {{item.type}}
+                        </label>
+                    </td>
                 </tr>
             </tbody>
         </table>

@@ -8,7 +8,7 @@ import { User } from './user';
 })
 export class LoginService {
 
-  private baseUrl = 'http://localhost:8080/digitalbanking/login';
+  private baseUrl = 'http://localhost:8080/';
 
   constructor(private httpClient: HttpClient) { }
 
